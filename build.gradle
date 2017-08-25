@@ -11,7 +11,6 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
 version = '0.0.1-SNAPSHOT'
@@ -27,5 +26,6 @@ dependencies {
 //	compile('org.liquibase:liquibase-core')
 	runtime('com.h2database:h2')
 	compileOnly('org.projectlombok:lombok')
+	compile group: 'org.hibernate', name: 'hibernate-java8', version: '5.0.12.Final'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
