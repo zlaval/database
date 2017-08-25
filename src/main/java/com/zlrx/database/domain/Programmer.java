@@ -4,9 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
@@ -22,15 +20,14 @@ public class Programmer extends BaseEntity {
     @Type(type = "yes_no")
     private Boolean senior;
 
+    @OneToOne
     private Address address;
 
+    @OneToMany
     private List<Phone> phones;
 
+    @ManyToMany
     private List<ProgrammingLanguage> programmingLanguages;
 
 
-
-    //TODO Address one to many
-    //TODO Phone   many to one
-    //TODO ProgLang many to many
 }

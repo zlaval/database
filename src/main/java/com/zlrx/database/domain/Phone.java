@@ -25,6 +25,7 @@ public class Phone extends BaseEntity {
     @Column(name = "price", nullable = false, precision = 2)
     private Double price;
 
+    @ManyToOne
     private Programmer owner;
 
 }

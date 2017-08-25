@@ -5,8 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.List;
 
 @Getter
 @Setter
@@ -26,6 +26,7 @@ public class Address extends BaseEntity {
     @Basic
     private Integer houseNumber;
 
-    private List<Programmer> programmers;
+    @OneToOne
+    private Programmer programmer;
 
 }
