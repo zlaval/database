@@ -17,16 +17,16 @@ import java.util.Objects;
 public abstract class BaseEntity implements Serializable {
 
     @Id
-    @Column(name = "ID", nullable = false, unique = true, updatable = false, length = 32)
+    @Column(name = "id", nullable = false, unique = true, updatable = false, length = 32)
     protected String id = IdGenerator.generateId();
 
     @Version
     protected Long version;
 
-    @Column(name = "CREATED_AT", nullable = false)
+    @Column(name = "created_at", nullable = false)
     protected LocalDateTime createdAt;
 
-    @Column(name = "UPDATED_AT", nullable = false)
+    @Column(name = "updated_at", nullable = false)
     protected LocalDateTime updatedAt;
 
     @PreUpdate

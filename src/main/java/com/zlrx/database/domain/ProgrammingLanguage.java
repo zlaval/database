@@ -3,9 +3,10 @@ package com.zlrx.database.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 @Getter
@@ -19,11 +20,7 @@ public class ProgrammingLanguage extends BaseEntity {
 
     @Basic
     private Optional<String> inventor;
-
     @Basic
     private LocalDate release;
-
-    @ManyToMany
-    private List<Programmer> users;
 
 }

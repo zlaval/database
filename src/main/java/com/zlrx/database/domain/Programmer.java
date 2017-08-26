@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "PROGRAMMER")
+@Table(name = "programmer")
 public class Programmer extends BaseEntity {
 
     @Basic
@@ -21,12 +21,16 @@ public class Programmer extends BaseEntity {
     private Boolean senior;
 
     @OneToOne
+    @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToMany
+    @OneToMany(mappedBy = "owner")
     private List<Phone> phones;
 
     @ManyToMany
+    @JoinTable(name = "programmer_languages",
+            joinColumns = @JoinColumn(name = "programmer_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "prog_lang_id", referencedColumnName = "id"))
     private List<ProgrammingLanguage> programmingLanguages;
 
 

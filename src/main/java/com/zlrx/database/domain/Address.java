@@ -3,10 +3,7 @@ package com.zlrx.database.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -23,10 +20,10 @@ public class Address extends BaseEntity {
     @Basic
     private String street;
 
-    @Basic
+    @Column(name = "house_number")
     private Integer houseNumber;
 
-    @OneToOne
+    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
     private Programmer programmer;
 
 }
