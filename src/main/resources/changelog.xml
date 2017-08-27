@@ -1,12 +1,11 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
-                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
-                   http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-   
-    <changeSet author="javadevzed" id="1503852260988-1">
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+
+    <changeSet author="javadevzed" id="1503859387433-1">
         <createTable tableName="address">
             <column name="id" type="VARCHAR(32)">
                 <constraints nullable="false"/>
@@ -25,7 +24,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet author="javadevzed" id="1503852260988-2">
+    <changeSet author="javadevzed" id="1503859387433-2">
         <createTable tableName="phone">
             <column name="id" type="VARCHAR(32)">
                 <constraints nullable="false"/>
@@ -50,13 +49,12 @@
             </column>
         </createTable>
     </changeSet>
-
-    <changeSet author="javadevzed" id="1503852260988-3">
+    <changeSet author="javadevzed" id="1503859387433-3">
         <createTable tableName="programmer">
             <column name="id" type="VARCHAR(32)">
                 <constraints nullable="false"/>
             </column>
-           <column name="version" type="BIGINT"/>
+            <column name="version" type="BIGINT"/>
             <column name="name" type="VARCHAR(255)"/>
             <column name="senior" type="CHAR(1)"/>
             <column name="address_id" type="VARCHAR(32)"/>
@@ -68,9 +66,8 @@
             </column>
         </createTable>
     </changeSet>
-
-    <changeSet author="javadevzed" id="1503852260988-4">
-        <createTable tableName="programmer_languages">
+    <changeSet author="javadevzed" id="1503859387433-4">
+        <createTable tableName="programmer_to_proglanguage">
             <column name="programmer_id" type="VARCHAR(32)">
                 <constraints nullable="false"/>
             </column>
@@ -79,49 +76,79 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet author="javadevzed" id="1503859387433-5">
+        <createTable tableName="programming_language">
+            <column name="id" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="BIGINT"/>
+            <column name="inventor" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="release_date" type="date"/>
+            <column name="created_at" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 
-    <changeSet author="javadevzed" id="1503852260988-5">
+    <changeSet author="javadevzed" id="1503859387433-6">
         <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="address"/>
     </changeSet>
-    <changeSet author="javadevzed" id="1503852260988-6">
+    <changeSet author="javadevzed" id="1503859387433-7">
         <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="phone"/>
     </changeSet>
-    <changeSet author="javadevzed" id="1503852260988-7">
+    <changeSet author="javadevzed" id="1503859387433-8">
         <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="programmer"/>
     </changeSet>
-    <changeSet author="javadevzed" id="1503852260988-8">
+    <changeSet author="javadevzed" id="1503859387433-9">
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="programming_language"/>
+    </changeSet>
+    <changeSet author="javadevzed" id="1503859387433-10">
         <addUniqueConstraint columnNames="imei" constraintName="UK_955gbxym9b3xwysoisahynntq" tableName="phone"/>
     </changeSet>
 
-    <changeSet author="javadevzed" id="1503852260988-9">
-        <createIndex indexName="FK4rhw0rjblfwsw8b0v9vv62d4i" tableName="programmer_languages">
-            <column name="programmer_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="javadevzed" id="1503852260988-10">
+    <changeSet author="javadevzed" id="1503859387433-11">
         <createIndex indexName="FK6pu5m57kmn7a1141gl6u7952o" tableName="programmer">
             <column name="address_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="javadevzed" id="1503852260988-11">
+    <changeSet author="javadevzed" id="1503859387433-12">
         <createIndex indexName="FKafbpdydq4o31a1pkkgx6rah9g" tableName="phone">
             <column name="owner_id"/>
         </createIndex>
     </changeSet>
-
-    <changeSet author="javadevzed" id="1503852260988-12">
-        <addForeignKeyConstraint baseColumnNames="programmer_id" baseTableName="programmer_languages"
-                                 constraintName="FK4rhw0rjblfwsw8b0v9vv62d4i"
-                                 referencedColumnNames="id" referencedTableName="programmer"/>
+    <changeSet author="javadevzed" id="1503859387433-13">
+        <createIndex indexName="FKgfw7ryijsl0ug4oqutogdvlw6" tableName="programmer_to_proglanguage">
+            <column name="prog_lang_id"/>
+        </createIndex>
     </changeSet>
-    <changeSet author="javadevzed" id="1503852260988-13">
+    <changeSet author="javadevzed" id="1503859387433-14">
+        <createIndex indexName="FKrkse2b1u2qsykudcnndjca9fy" tableName="programmer_to_proglanguage">
+            <column name="programmer_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="javadevzed" id="1503859387433-15">
         <addForeignKeyConstraint baseColumnNames="address_id" baseTableName="programmer"
-                                 constraintName="FK6pu5m57kmn7a1141gl6u7952o"
+                                 constraintName="FK6pu5m57kmn7a1141gl6u7952o" 
                                  referencedColumnNames="id" referencedTableName="address"/>
     </changeSet>
-    <changeSet author="javadevzed" id="1503852260988-14">
+    <changeSet author="javadevzed" id="1503859387433-16">
         <addForeignKeyConstraint baseColumnNames="owner_id" baseTableName="phone"
                                  constraintName="FKafbpdydq4o31a1pkkgx6rah9g"
+                                 referencedColumnNames="id" referencedTableName="programmer"/>
+    </changeSet>
+    <changeSet author="javadevzed" id="1503859387433-17">
+        <addForeignKeyConstraint baseColumnNames="prog_lang_id" baseTableName="programmer_to_proglanguage"
+                                 constraintName="FKgfw7ryijsl0ug4oqutogdvlw6"
+                                 referencedColumnNames="id" referencedTableName="programming_language"/>
+    </changeSet>
+    <changeSet author="javadevzed" id="1503859387433-18">
+        <addForeignKeyConstraint baseColumnNames="programmer_id" baseTableName="programmer_to_proglanguage"
+                                 constraintName="FKrkse2b1u2qsykudcnndjca9fy" 
                                  referencedColumnNames="id" referencedTableName="programmer"/>
     </changeSet>
 </databaseChangeLog>

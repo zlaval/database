@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDate;
@@ -20,7 +21,7 @@ public class ProgrammingLanguage extends BaseEntity {
     @Basic
     private String inventor;
 
-    @Basic
+    @Column(name = "release_date")
     private LocalDate release;
 
 }

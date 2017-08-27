@@ -11,3 +11,4 @@ spring:
           auto: validate
 liquibase:
   change-log: 'classpath:changelog.xml'
+  enabled: true

@@ -28,7 +28,7 @@ public class Programmer extends BaseEntity {
     private List<Phone> phones;
 
     @ManyToMany
-    @JoinTable(name = "programmer_languages",
+    @JoinTable(name = "programmer_to_proglanguage",
             joinColumns = @JoinColumn(name = "programmer_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "prog_lang_id", referencedColumnName = "id"))
     private List<ProgrammingLanguage> programmingLanguages;
