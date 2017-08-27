@@ -1,14 +1,13 @@
 spring:
   datasource:
-    driverClassName: org.h2.Driver
-    url: 'jdbc:h2:mem:testdb'
-    username: sa
-    password:
+    driverClassName: com.mysql.jdbc.Driver
+    url: 'jdbc:mysql://192.168.99.100/dbdemo'
+    username: root
+    password: my-secret-pw
   jpa:
     properties:
       hibernate:
         hbm2ddl:
           auto: validate
-
 liquibase:
   change-log: 'classpath:changelog.xml'

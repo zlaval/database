@@ -7,7 +7,6 @@ import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDate;
-import java.util.Optional;
 
 @Getter
 @Setter
@@ -19,7 +18,8 @@ public class ProgrammingLanguage extends BaseEntity {
     private String name;
 
     @Basic
-    private Optional<String> inventor;
+    private String inventor;
+
     @Basic
     private LocalDate release;
 
