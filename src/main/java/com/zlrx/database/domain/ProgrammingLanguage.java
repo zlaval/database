@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table
+@Table(name = "programming_language")
 public class ProgrammingLanguage extends BaseEntity {
 
     @Basic

@@ -140,4 +140,21 @@
                                  constraintName="FKrkse2b1u2qsykudcnndjca9fy" 
                                  referencedColumnNames="id" referencedTableName="programmer"/>
     </changeSet>
+
+    <changeSet id="201708281943" author="javadevzed">
+        <loadData tableName="address" file="migration/address.csv" encoding="UTF-8" separator=","/>
+    </changeSet>
+    <changeSet id="201708281944" author="javadevzed">
+        <loadData tableName="programming_language" file="migration/proglang.csv" encoding="UTF-8" separator=","/>
+    </changeSet>
+    <changeSet id="201708281945" author="javadevzed">
+        <loadData tableName="programmer" file="migration/programmer.csv" encoding="UTF-8" separator=","/>
+    </changeSet>
+    <changeSet id="201708281946" author="javadevzed">
+        <loadData tableName="phone" file="migration/phone.csv" encoding="UTF-8" separator=","/>
+    </changeSet>
+    <changeSet id="201708281947" author="javadevzed">
+        <loadData tableName="programmer_to_proglanguage" file="migration/programmer_proglang.csv" encoding="UTF-8" separator=","/>
+    </changeSet>
+
 </databaseChangeLog>
