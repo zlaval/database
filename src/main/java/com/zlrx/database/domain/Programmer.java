@@ -20,7 +20,7 @@ public class Programmer extends BaseEntity {
     @Type(type = "yes_no")
     private Boolean senior;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
     private Address address;
 
@@ -32,6 +32,5 @@ public class Programmer extends BaseEntity {
             joinColumns = @JoinColumn(name = "programmer_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "prog_lang_id", referencedColumnName = "id"))
     private List<ProgrammingLanguage> programmingLanguages;
-
 
 }

@@ -8,7 +8,7 @@
     <changeSet author="javadevzed" id="1503859387433-1">
         <createTable tableName="address">
             <column name="id" type="VARCHAR(32)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_ADDRESS"/>
             </column>
             <column name="version" type="BIGINT"/>
             <column name="city" type="VARCHAR(255)"/>
@@ -27,7 +27,7 @@
     <changeSet author="javadevzed" id="1503859387433-2">
         <createTable tableName="phone">
             <column name="id" type="VARCHAR(32)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PHONE"/>
             </column>
             <column name="version" type="BIGINT"/>
             <column name="imei" type="VARCHAR(50)">
@@ -52,7 +52,7 @@
     <changeSet author="javadevzed" id="1503859387433-3">
         <createTable tableName="programmer">
             <column name="id" type="VARCHAR(32)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PROGRAMMER"/>
             </column>
             <column name="version" type="BIGINT"/>
             <column name="name" type="VARCHAR(255)"/>
@@ -79,7 +79,7 @@
     <changeSet author="javadevzed" id="1503859387433-5">
         <createTable tableName="programming_language">
             <column name="id" type="VARCHAR(32)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PROG_LANG"/>
             </column>
             <column name="version" type="BIGINT"/>
             <column name="inventor" type="VARCHAR(255)"/>
@@ -94,18 +94,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet author="javadevzed" id="1503859387433-6">
-        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="address"/>
-    </changeSet>
-    <changeSet author="javadevzed" id="1503859387433-7">
-        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="phone"/>
-    </changeSet>
-    <changeSet author="javadevzed" id="1503859387433-8">
-        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="programmer"/>
-    </changeSet>
-    <changeSet author="javadevzed" id="1503859387433-9">
-        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="programming_language"/>
-    </changeSet>
+
     <changeSet author="javadevzed" id="1503859387433-10">
         <addUniqueConstraint columnNames="imei" constraintName="UK_955gbxym9b3xwysoisahynntq" tableName="phone"/>
     </changeSet>
