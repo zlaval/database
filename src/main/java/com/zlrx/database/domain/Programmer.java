@@ -20,11 +20,11 @@ public class Programmer extends BaseEntity {
     @Type(type = "yes_no")
     private Boolean senior;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Phone> phones;
 
     @ManyToMany
