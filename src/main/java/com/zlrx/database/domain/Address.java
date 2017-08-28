@@ -23,7 +23,7 @@ public class Address extends BaseEntity {
     @Column(name = "house_number")
     private Integer houseNumber;
 
-    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "address")
     private Programmer programmer;
 
 }
