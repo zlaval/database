@@ -22,6 +22,6 @@ public class DatabaseApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        databaseOperationService.operate();
+        databaseOperationService.doAllDatabaseOperation();
     }
 }

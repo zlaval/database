@@ -56,6 +56,9 @@
             </column>
             <column name="version" type="BIGINT"/>
             <column name="name" type="VARCHAR(255)"/>
+            <column name="id_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
             <column name="senior" type="CHAR(1)"/>
             <column name="address_id" type="VARCHAR(32)"/>
             <column name="created_at" type="datetime(6)">
@@ -65,6 +68,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <addUniqueConstraint columnNames="id_number" constraintName="UK_programmer_id_number" tableName="programmer"/>
     </changeSet>
     <changeSet author="javadevzed" id="1503859387433-4">
         <createTable tableName="programmer_to_proglanguage">
@@ -122,7 +126,7 @@
 
     <changeSet author="javadevzed" id="1503859387433-15">
         <addForeignKeyConstraint baseColumnNames="address_id" baseTableName="programmer"
-                                 constraintName="FK6pu5m57kmn7a1141gl6u7952o" 
+                                 constraintName="FK6pu5m57kmn7a1141gl6u7952o"
                                  referencedColumnNames="id" referencedTableName="address"/>
     </changeSet>
     <changeSet author="javadevzed" id="1503859387433-16">

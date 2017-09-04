@@ -16,6 +16,9 @@ public class Programmer extends BaseEntity {
     @Basic
     private String name;
 
+    @Column(name = "id_number", nullable = false, unique = true)
+    private String idNumber;
+
     //hibernate specific
     @Type(type = "yes_no")
     private Boolean senior;
