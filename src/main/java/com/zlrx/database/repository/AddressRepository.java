@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface AddressRepository extends JpaRepository<Address, String> {
+public interface AddressRepository extends JpaRepository<Address, String>, CustomAddressRepository {
 
     List<Address> findByCityAndStreet(String city, String street);
 
