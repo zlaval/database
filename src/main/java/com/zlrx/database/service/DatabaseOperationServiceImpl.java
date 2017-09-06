@@ -1,6 +1,8 @@
 package com.zlrx.database.service;
 
 import com.zlrx.database.domain.Address;
+import com.zlrx.database.domain.Programmer;
+import com.zlrx.database.pojo.ProgrammerNameAndCity;
 import com.zlrx.database.repository.AddressRepository;
 import com.zlrx.database.repository.PhoneRepository;
 import com.zlrx.database.repository.ProgrammerRepository;
@@ -23,26 +25,24 @@ public class DatabaseOperationServiceImpl implements DatabaseOperationService {
     @Autowired
     private PhoneRepository phoneRepository;
 
-
     @Override
     public void doAllDatabaseOperation() {
         Address address = new Address();
-        address.setCity("Budapest");
+        address.setCity("Mucsarocsoge");
         address.setHouseNumber(1);
-        address.setStreet("Szigony");
+        address.setStreet("New Street");
         address.setZip(1083);
-        addressRepository.save(address);
+        Address savedAddress = addressRepository.save(address);
 
-        Address address2 = new Address();
-        address2.setCity("Budapest");
-        address2.setHouseNumber(5);
-        address2.setStreet("Szigony");
-        address2.setZip(1083);
-        addressRepository.save(address2);
+        Programmer programmer = new Programmer();
+        programmer.setSenior(true);
+        programmer.setName("Joe Doe");
+        programmer.setIdNumber("123");
+        programmer.setAddress(savedAddress);
+        programmerRepository.save(programmer);
 
-        List<Address> r1 = addressRepository.findAllMatch(1083, "Budapest", "Szigony", null);
-        List<Address> r2 = addressRepository.findAllMatch(1083, null, null, 1);
-        List<Address> r3 = addressRepository.findAllMatch(1083, null, null, null);
+        ProgrammerNameAndCity nac = programmerRepository.findNameAndCityByIdNumber("123");
+
         System.out.println();
     }
 }
