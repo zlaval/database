@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface PhoneRepository extends JpaRepository<Phone, String> {
 
-    List<Phone> findByOwner(Programmer programmer);
+    List<Phone> findByOwnerOrderByImei(Programmer programmer);
 
     @Query("select p from Phone p where p.imei=?1")
     Phone findByImei(String imei);

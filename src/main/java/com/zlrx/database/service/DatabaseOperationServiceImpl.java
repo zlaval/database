@@ -7,6 +7,7 @@ import com.zlrx.database.repository.AddressRepository;
 import com.zlrx.database.repository.PhoneRepository;
 import com.zlrx.database.repository.ProgrammerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,8 +41,14 @@ public class DatabaseOperationServiceImpl implements DatabaseOperationService {
         programmer.setIdNumber("123");
         programmer.setAddress(savedAddress);
         programmerRepository.save(programmer);
+        programmerRepository.findAll();
 
         ProgrammerNameAndCity nac = programmerRepository.findNameAndCityByIdNumber("123");
+
+        Sort.Order order = new Sort.Order(Sort.Direction.ASC, "name");
+        Sort sort = new Sort(order);
+        programmerRepository.findByName("Joe Doe", sort);
+
 
         System.out.println();
     }
