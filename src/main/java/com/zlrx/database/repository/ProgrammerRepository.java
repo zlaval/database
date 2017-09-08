@@ -2,6 +2,7 @@ package com.zlrx.database.repository;
 
 import com.zlrx.database.domain.Programmer;
 import com.zlrx.database.pojo.ProgrammerNameAndCity;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,7 +18,7 @@ public interface ProgrammerRepository extends JpaRepository<Programmer, String> 
 
     List<Programmer> findByName(String name, Sort sort);
 
-    List<Programmer> findByName(String name, Pageable pageable);
+    Page<Programmer> findByName(String name, Pageable pageable);
 
     Programmer findByIdNumber(String idNumber);
 
