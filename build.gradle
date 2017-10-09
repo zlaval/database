@@ -28,5 +28,6 @@ dependencies {
     compileOnly('org.projectlombok:lombok')
     compile group: 'org.hibernate', name: 'hibernate-java8', version: '5.0.12.Final'
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.43'
+    compile group: 'org.jinq', name: 'jinq-jpa', version: '1.8.22'
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
