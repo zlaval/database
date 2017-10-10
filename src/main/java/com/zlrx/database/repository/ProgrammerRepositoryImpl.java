@@ -3,6 +3,8 @@ package com.zlrx.database.repository;
 import com.zlrx.database.config.JinqSource;
 import com.zlrx.database.domain.Phone;
 import com.zlrx.database.domain.Programmer;
+import com.zlrx.database.domain.ProgrammingLanguage;
+import org.jinq.jpa.JPQL;
 import org.jinq.orm.stream.JinqStream;
 import org.jinq.tuples.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -102,6 +105,33 @@ public class ProgrammerRepositoryImpl implements CustomProgrammerRepository {
     @Override
     public List<String> findProgrammerNamesOrderByName() {
         return stream().select(Programmer::getName).sortedBy(e -> e).toList();
+    }
+
+    @Override
+    public List<String> findDistinctProgrammerNames() {
+        return stream().select(Programmer::getName).distinct().toList();
+    }
+
+    @Override
+    public List<Programmer> findByNameLike() {
+        return stream()
+                .where(p -> p.getName().startsWith("Jo") || p.getName().startsWith("Ja"))
+                .toList();
+    }
+
+    @Override
+    public List<Programmer> findJavaUsers() {
+        return stream().where(p ->
+                JPQL.isIn("Java",
+                        JinqStream.from(p.getProgrammingLanguages())
+                                .select(ProgrammingLanguage::getName)
+                )
+        ).toList();
+    }
+
+    @Override
+    public List<Programmer> createdBefore(LocalDateTime date) {
+        return stream().where(p -> p.getCreatedAt().isBefore(date)).toList();
     }
 
 

@@ -5,6 +5,7 @@ import com.zlrx.database.domain.Programmer;
 import org.jinq.tuples.Pair;
 import org.springframework.data.repository.NoRepositoryBean;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @NoRepositoryBean
@@ -31,6 +32,14 @@ public interface CustomProgrammerRepository {
     Integer findBestSalary();
 
     List<String> findProgrammerNamesOrderByName();
+
+    List<String> findDistinctProgrammerNames();
+
+    List<Programmer> findByNameLike();
+
+    List<Programmer> findJavaUsers();
+
+    List<Programmer> createdBefore(LocalDateTime date);
 
 
 }

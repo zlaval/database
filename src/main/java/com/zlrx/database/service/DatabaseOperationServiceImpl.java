@@ -16,6 +16,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
 
@@ -50,15 +51,15 @@ public class DatabaseOperationServiceImpl implements DatabaseOperationService {
 
 
         Double averageSalary = programmerRepository.calculateAverageSalary();
-
         Long programmersCount = programmerRepository.countProgrammersInDatabase();
-
         Long sumOfSalary = programmerRepository.calculateSumOfSalary();
-
         Integer bestSalary = programmerRepository.findBestSalary();
 
         List<String> programmerNames = programmerRepository.findProgrammerNamesOrderByName();
-
+        List<String> distinctProgrammerNames = programmerRepository.findDistinctProgrammerNames();
+        List<Programmer> nameLike = programmerRepository.findByNameLike();
+        List<Programmer> javaUsers = programmerRepository.findJavaUsers();
+        List<Programmer> createdBefore = programmerRepository.createdBefore(LocalDateTime.of(2017, 9, 1, 12, 0, 0));
 
         Pageable pageable = new PageRequest(0, 2);
         Page<Programmer> programers = programmerRepository.findByName("Joe Doe", pageable);
