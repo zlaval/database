@@ -1,4 +1,5 @@
 id,version,type,producer,imei,price,owner_id,created_at,updated_at
 1,0,Nexus,LG,1234,10.55,1,2017-08-28,2017-08-28
 2,0,Galaxy,Samsung,2345,12.23,2,2017-08-28,2017-08-28
-3,0,Iphone,Apple,3456,14.68,2,2017-08-28,2017-08-28
+3,0,Iphone,Apple,3456,14.68,1,2017-08-28,2017-08-28
+4,0,Nexus,LG,5645,10.55,2,2017-08-28,2017-08-28

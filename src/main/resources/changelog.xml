@@ -60,6 +60,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="senior" type="CHAR(1)"/>
+            <column name="salary" type="INTEGER"/>
             <column name="address_id" type="VARCHAR(32)"/>
             <column name="created_at" type="datetime(6)">
                 <constraints nullable="false"/>

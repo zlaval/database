@@ -1,11 +1,13 @@
 package com.zlrx.database.service;
 
 import com.zlrx.database.domain.Address;
+import com.zlrx.database.domain.Phone;
 import com.zlrx.database.domain.Programmer;
 import com.zlrx.database.pojo.ProgrammerNameAndCity;
 import com.zlrx.database.repository.AddressRepository;
 import com.zlrx.database.repository.PhoneRepository;
 import com.zlrx.database.repository.ProgrammerRepository;
+import org.jinq.tuples.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -30,8 +32,35 @@ public class DatabaseOperationServiceImpl implements DatabaseOperationService {
     @Autowired
     private PhoneRepository phoneRepository;
 
+
     @Override
     public void doAllDatabaseOperation() {
+        seed();
+
+        List<Programmer> seniorProgrammers = programmerRepository.findAllSenior();
+        String name = programmerRepository.findNameByIdNumber("346542DA");
+
+        List<Pair<Programmer, Phone>> programmersWithPhones = programmerRepository.findPhoneJoin();
+        List<Phone> phones=programmerRepository.getProgrammerPhones("Zalan","Nexus");
+
+        List<Programmer> dina1 = programmerRepository.findDynamically(null, null);
+        List<Programmer> dina2 = programmerRepository.findDynamically("Zalan", null);
+        List<Programmer> dina3 = programmerRepository.findDynamically(null, "645234LA");
+        List<Programmer> dina4 = programmerRepository.findDynamically("Zalan", "346542DA");
+
+        Pageable pageable = new PageRequest(0, 2);
+        Page<Programmer> programers = programmerRepository.findByName("Joe Doe", pageable);
+        long elements = programers.getTotalElements();
+        long totalPages = programers.getTotalPages();
+        Iterator<Programmer> it = programers.iterator();
+        it.forEachRemaining(p -> System.out.println(p.getIdNumber()));
+
+
+        Address address1 = addressRepository.findByProgrammerName("Joe Doe");
+
+    }
+
+    private void seed() {
         Address address = new Address();
         address.setCity("Mucsarocsoge");
         address.setHouseNumber(1);
@@ -44,6 +73,7 @@ public class DatabaseOperationServiceImpl implements DatabaseOperationService {
         programmer.setName("Joe Doe");
         programmer.setIdNumber("123");
         programmer.setAddress(savedAddress);
+        programmer.setSalary(96323);
         programmerRepository.save(programmer);
         programmerRepository.findAll();
 
@@ -57,23 +87,15 @@ public class DatabaseOperationServiceImpl implements DatabaseOperationService {
         programmer2.setSenior(true);
         programmer2.setName("Joe Doe");
         programmer2.setIdNumber("1234");
+        programmer2.setSalary(68234);
         programmerRepository.save(programmer2);
 
         Programmer programmer3 = new Programmer();
         programmer3.setSenior(true);
         programmer3.setName("Joe Doe");
         programmer3.setIdNumber("1235");
+        programmer3.setSalary(98273);
         programmerRepository.save(programmer3);
-
-        Pageable pageable = new PageRequest(0, 2);
-        Page<Programmer> programers = programmerRepository.findByName("Joe Doe", pageable);
-        long elements = programers.getTotalElements();
-        long totalPages = programers.getTotalPages();
-        Iterator<Programmer> it = programers.iterator();
-        it.forEachRemaining(p -> System.out.println(p.getIdNumber()));
-
-        Address address1=addressRepository.findByProgrammerName("Joe Doe");
-
-        System.out.println();
     }
+
 }

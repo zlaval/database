@@ -1,3 +1,4 @@
-id,version,name,senior,address_id,created_at,updated_at,id_number
-1,0,Zalan,Y,1,2017-08-28,2017-08-28,346542DA
-2,0,Jakab,N,2,2017-08-28,2017-08-28,645234LA
+id,version,name,senior,address_id,created_at,updated_at,id_number,salary
+1,0,Zalan,Y,1,2017-08-28,2017-08-28,346542DA,89546
+2,0,Jakab,N,2,2017-08-28,2017-08-28,645234LA,35745
+3,0,Zalan,N,1,2017-08-28,2017-08-28,346545DA,23875

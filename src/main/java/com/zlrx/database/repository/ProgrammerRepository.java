@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface ProgrammerRepository extends JpaRepository<Programmer, String> {
+public interface ProgrammerRepository extends JpaRepository<Programmer, String>,CustomProgrammerRepository {
 
     List<Programmer> findBySeniorTrue();
 
