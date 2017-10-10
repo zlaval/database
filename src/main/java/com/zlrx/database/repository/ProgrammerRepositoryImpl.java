@@ -57,6 +57,7 @@ public class ProgrammerRepositoryImpl implements CustomProgrammerRepository {
         return stream().where(p -> p.getSalary() < 50_000).toList();
     }
 
+    @Override
     public List<Pair<Programmer, Phone>> findPhoneJoin() {
         return stream()
                 .join((programmer, source) -> source.stream(Phone.class))
@@ -64,7 +65,8 @@ public class ProgrammerRepositoryImpl implements CustomProgrammerRepository {
 
     }
 
-    public List<Phone> getProgrammerPhones(String name, String phoneType) {
+    @Override
+    public List<Phone> findProgrammerPhones(String name, String phoneType) {
 //        return stream().where(p -> p.getName().equals(name))
 //                .leftOuterJoin(p -> JinqStream.from(p.getPhones()))
 //                .select(Pair::getTwo)
@@ -76,4 +78,31 @@ public class ProgrammerRepositoryImpl implements CustomProgrammerRepository {
                 .where(phone -> phone.getType().equals(phoneType))
                 .toList();
     }
+
+    @Override
+    public Double calculateAverageSalary() {
+        return stream().avg(Programmer::getSalary);
+    }
+
+    @Override
+    public Long countProgrammersInDatabase() {
+        return stream().count();
+    }
+
+    @Override
+    public Long calculateSumOfSalary() {
+        return stream().sumInteger(Programmer::getSalary);
+    }
+
+    @Override
+    public Integer findBestSalary() {
+        return stream().max(Programmer::getSalary);
+    }
+
+    @Override
+    public List<String> findProgrammerNamesOrderByName() {
+        return stream().select(Programmer::getName).sortedBy(e -> e).toList();
+    }
+
+
 }

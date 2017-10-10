@@ -20,7 +20,17 @@ public interface CustomProgrammerRepository {
 
     List<Pair<Programmer, Phone>> findPhoneJoin();
 
-    List<Phone> getProgrammerPhones(String name,String phoneType);
+    List<Phone> findProgrammerPhones(String name, String phoneType);
+
+    Double calculateAverageSalary();
+
+    Long countProgrammersInDatabase();
+
+    Long calculateSumOfSalary();
+
+    Integer findBestSalary();
+
+    List<String> findProgrammerNamesOrderByName();
 
 
 }

@@ -41,12 +41,24 @@ public class DatabaseOperationServiceImpl implements DatabaseOperationService {
         String name = programmerRepository.findNameByIdNumber("346542DA");
 
         List<Pair<Programmer, Phone>> programmersWithPhones = programmerRepository.findPhoneJoin();
-        List<Phone> phones=programmerRepository.getProgrammerPhones("Zalan","Nexus");
+        List<Phone> phones = programmerRepository.findProgrammerPhones("Zalan", "Nexus");
 
         List<Programmer> dina1 = programmerRepository.findDynamically(null, null);
         List<Programmer> dina2 = programmerRepository.findDynamically("Zalan", null);
         List<Programmer> dina3 = programmerRepository.findDynamically(null, "645234LA");
         List<Programmer> dina4 = programmerRepository.findDynamically("Zalan", "346542DA");
+
+
+        Double averageSalary = programmerRepository.calculateAverageSalary();
+
+        Long programmersCount = programmerRepository.countProgrammersInDatabase();
+
+        Long sumOfSalary = programmerRepository.calculateSumOfSalary();
+
+        Integer bestSalary = programmerRepository.findBestSalary();
+
+        List<String> programmerNames = programmerRepository.findProgrammerNamesOrderByName();
+
 
         Pageable pageable = new PageRequest(0, 2);
         Page<Programmer> programers = programmerRepository.findByName("Joe Doe", pageable);
