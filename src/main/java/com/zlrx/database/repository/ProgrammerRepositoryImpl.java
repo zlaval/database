@@ -30,13 +30,19 @@ public class ProgrammerRepositoryImpl implements CustomProgrammerRepository {
     }
 
     @Override
+    public List<Programmer> findAllWithJinq() {
+        return stream().toList();
+    }
+
+    @Override
     public List<Programmer> findAllSenior() {
         return stream().where(p -> p.getSenior().equals(true)).toList();
     }
 
     @Override
     public String findNameByIdNumber(String idNumber) {
-        return stream().where(p -> p.getIdNumber().equals(idNumber))
+        return stream()
+                .where(p -> p.getIdNumber().equals(idNumber))
                 .select(Programmer::getName)
                 .getOnlyValue();
     }

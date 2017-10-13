@@ -38,6 +38,8 @@ public class DatabaseOperationServiceImpl implements DatabaseOperationService {
     public void doAllDatabaseOperation() {
         seed();
 
+        List<Programmer> all = programmerRepository.findAllWithJinq();
+
         List<Programmer> seniorProgrammers = programmerRepository.findAllSenior();
         String name = programmerRepository.findNameByIdNumber("346542DA");
 

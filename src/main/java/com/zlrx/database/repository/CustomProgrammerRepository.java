@@ -41,5 +41,6 @@ public interface CustomProgrammerRepository {
 
     List<Programmer> createdBefore(LocalDateTime date);
 
+    List<Programmer> findAllWithJinq();
 
 }
