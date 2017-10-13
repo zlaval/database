@@ -108,7 +108,7 @@ public class ProgrammerRepositoryImpl implements CustomProgrammerRepository {
 
     @Override
     public List<String> findProgrammerNamesOrderByName() {
-        return stream().select(Programmer::getName).sortedBy(e -> e).toList();
+        return stream().select(Programmer::getName).sortedBy(name -> name).toList();
     }
 
     @Override
@@ -117,7 +117,7 @@ public class ProgrammerRepositoryImpl implements CustomProgrammerRepository {
     }
 
     @Override
-    public List<Programmer> findByNameLike() {
+    public List<Programmer> findByNameOr() {
         return stream()
                 .where(p -> p.getName().startsWith("Jo") || p.getName().startsWith("Ja"))
                 .toList();

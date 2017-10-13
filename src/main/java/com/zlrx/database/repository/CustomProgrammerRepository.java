@@ -35,7 +35,7 @@ public interface CustomProgrammerRepository {
 
     List<String> findDistinctProgrammerNames();
 
-    List<Programmer> findByNameLike();
+    List<Programmer> findByNameOr();
 
     List<Programmer> findJavaUsers();
 

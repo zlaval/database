@@ -59,7 +59,7 @@ public class DatabaseOperationServiceImpl implements DatabaseOperationService {
 
         List<String> programmerNames = programmerRepository.findProgrammerNamesOrderByName();
         List<String> distinctProgrammerNames = programmerRepository.findDistinctProgrammerNames();
-        List<Programmer> nameLike = programmerRepository.findByNameLike();
+        List<Programmer> nameLike = programmerRepository.findByNameOr();
         List<Programmer> javaUsers = programmerRepository.findJavaUsers();
         List<Programmer> createdBefore = programmerRepository.createdBefore(LocalDateTime.of(2017, 9, 1, 12, 0, 0));
 
