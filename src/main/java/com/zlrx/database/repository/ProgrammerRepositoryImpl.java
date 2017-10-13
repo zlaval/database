@@ -10,7 +10,6 @@ import org.jinq.tuples.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
@@ -26,7 +25,6 @@ public class ProgrammerRepositoryImpl implements CustomProgrammerRepository {
     @Autowired
     private JinqSource source;
 
-    @PostConstruct
     private JinqStream<Programmer> stream() {
         return source.stream(Programmer.class);
     }
